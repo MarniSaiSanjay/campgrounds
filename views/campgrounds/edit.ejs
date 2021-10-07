@@ -1,0 +1,93 @@
+<% layout('layouts/boilerplate') %>
+    <div class="container d-flex flex-column justify-content-center position-relative py-2"
+        style="width: 40vw; height: auto;">
+        <div class="card shadow" style="width: 110%;">
+            <div class="card-body">
+                <h4 class="card-title text-center" style="font-family: monospace;">Edit Campground</h4>
+
+                <form action="/campgrounds/<%=campFound.id %>?_method=PUT" method="POST" class="needs-validation"
+                    novalidate enctype="multipart/form-data">
+                    <div class="form-group mb-2">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Title" name="campFound[title]"
+                            value="<%= campFound.title %>" required>
+                        <div class="valid-feedback">
+                            Looks Great!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please make a title to campground.
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="location">Location</label>
+                        <input type="text" class="form-control" id="location" placeholder="Location"
+                            name="campFound[location]" value="<%= campFound.location %>" required>
+                        <div class="valid-feedback">
+                            Looks Great!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter the location of campground.
+                        </div>
+                    </div>
+
+
+                    <div class="input-group mb-3 custom-file">
+                        <input type="file" class="form-control" id="image" name="image" multiple>
+                        <!-- This attribute 'multiple' is to allow to add multiple files -->
+                        <label for="image" class="custom-file-label form-control"></label>
+                    </div>
+
+
+                    <label for="price">Price</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                        </div>
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" id="price"
+                            name="campFound[price]" value="<%= campFound.price%>" required>
+                        <div class="valid-feedback">
+                            Looks Great!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter price.
+                        </div>
+                        <!-- <div class="input-group-append">
+                    <span class="input-group-text">.00</span>
+                </div> -->
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" rows="3" name="campFound[description]" required>
+                <%= campFound.description %> 
+            </textarea>
+                        <div class="valid-feedback">
+                            Looks Great!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please leave a review.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <p>Select images you want to delete.</p>
+                        <% campFound.image.forEach(function(img, i){ %>
+                            <img src="<%= img.thumbnail %>" alt="" class="img-thumbnail m-1">
+                            <div class="form-check-inline">
+                                <input type="checkbox" id="image-<%= i %>" name="deleteImages[]"
+                                    value="<%= img.filename %>">
+                            </div>
+                            <!-- We can add label too if we want--><label for="image-<%= i %>"></label>
+                            <!-- Instead of calling 'img.url' as src, we call 'img.thumbnail' as then we can apply transformation to it.-->
+                            <% }) %>
+                    </div>
+                    <button type="submit" class="btn btn-success mt-2">Update CampGround</button>
+                </form>
+                <a href="/campgrounds/<%= campFound.id %>"> <button type="button"
+                        class="btn btn-outline-info mt-3">Back</button> </a>
+            </div>
+        </div>
+    </div>
+    <!-- </body>
+</html> -->

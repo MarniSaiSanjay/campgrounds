@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampIt</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css' rel='stylesheet' />
+
+</head>
+
+<body class="d-flex flex-column vh-100" style="background-color: #f5f2f1;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/campgrounds">CampIt</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link" href="/campgrounds">Campgrounds</a>
+          <a class="nav-link" href="/campgrounds/new">New</a>
+        </div>
+        <div class="navbar-nav ms-auto">
+          <!-- In Bootstrap-5 there are some changes, earlier it was ml-auto for margin-left:auto which is now changed to ms-auto (margin-start), similarly mr-auto is changed to me-auto. -->
+          <!-- but we should not have all of them at a time, so to check user is logged in or not we have to pass req.user to all routes, but instead we can add it to locals in the same way we added 'message', 'error' as all the templates have access to it.-->
+          <% if(!currentUser) {%>
+            <a href="/login" class="nav-link">Login</a>
+            <a href="/register" class="nav-link">Signup</a>
+            <% } else { %>
+              <a href="/logout" class="nav-link">Logout</a>
+              <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!--When this template is used the content is passed as body and inserted below.-->
+  <main class="container mt-2">
+    <%- include('../partials/flash') %>
+      <%- body %>
+  </main>
+
+  <%- include('../partials/footer') %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+    <script src="/javascripts/formvalid.js"></script> <!--FORM VALIDATIONS USING BOOTSTRAP-->
+
+</body>
+
+</html>

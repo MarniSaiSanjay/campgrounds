@@ -1,0 +1,41 @@
+<% layout('layouts/boilerplate') %>
+
+
+<div class="container col-5">
+    <img src="/camp.png" class="justify-content-center align-items-center im" alt=""style="width: 100%;">
+</div>
+    <div class="container col-5 mb-3">
+        <div class="card-body border login">
+            <h4 class="card-title text-center" style="font-family: monospace;">Register</h4>
+            <form action="/register" method="POST" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="username" class="form-label"> Username </label>
+                <input type="text" class="form-control" id="username" name="username"  required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label"> Email </label>
+                <input type="email" class="form-control" id="email " name="email"  required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label"> Password </label>
+                <input type="password" class="form-control" id="password" name="password" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-success" style="width: 100%;">Register</button>
+            
+            </form> 
+        </div>
+    </div>
+
+
+
+

@@ -1,0 +1,26 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="container col-5"><img src="/camp.png" class="justify-content-center align-items-center im" alt=""style="width: 100%;"></div>
+    <div class="container col-5">
+        <div class="card-body border login">
+            <h4 class="card-title text-center" style="font-family: monospace;">Login</h4>
+            <form action="/login" method="POST" class="validated-form" novalidate>
+                <div class="mb-3">
+                    <label class="form-label" for="username">Username</label>
+                    <input class="form-control" type="text" id="username" name="username" autofocus required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="password">Password</label>
+                    <input class="form-control" type="password" id="password" name="password" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <button class="btn btn-success btn-block" style="width: 100%;" >Login</button>
+            </form>
+        </div>
+    </div>
